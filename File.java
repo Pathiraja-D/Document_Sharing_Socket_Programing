@@ -15,16 +15,32 @@ public class File {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public byte[] getData() {
+        return data;
     }
 
     public void setData(byte[] data) {
         this.data = data;
     }
 
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
     public void setFileExtension(String fileExtension) {
         this.fileExtension = fileExtension;
+    }
+
+    public int getId() {
+        return id;
     }
 
 
