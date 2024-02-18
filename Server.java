@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -14,11 +15,10 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.MouseInputListener;
-import javax.swing.plaf.ComponentUI;
+
 
 public class Server{
-    static ArrayList<File> files = new ArrayList<File>();
+    static ArrayList<MyFile> myFiles = new ArrayList<MyFile>();
 
     public static String geFileExtension(String fileName){
         int i = fileName.lastIndexOf('.');
@@ -36,7 +36,7 @@ public class Server{
             public void mouseClicked(MouseEvent e) {
                 JPanel jPanel = (JPanel) e.getSource();
                 int fileId = Integer.parseInt(jPanel.getName());
-                for(File file: files){
+                for(MyFile file: myFiles){
                     if(file.getId() == fileId){
                         JFrame jfPreview = createFrame(file.getName(), file.getData(), file.getFileExtension());
                         jfPreview.setVisible(true);
@@ -203,7 +203,7 @@ public class Server{
                         
                         }
 
-                        files.add(new File(fileId, fileName, fileNameBytes, geFileExtension(fileName)));
+                        myFiles.add(new MyFile(fileId, fileName, fileNameBytes, geFileExtension(fileName)));
                     }
                 }
             }
